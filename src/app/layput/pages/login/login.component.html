@@ -1,0 +1,49 @@
+
+<div class=" w-75 my-5 mx-auto">
+  <h3 class=" text-main">Login Now</h3>
+
+  @if(errMsg){
+    <h4 class="  alert alert-danger">{{errMsg}}</h4>
+  }
+
+  <form [formGroup] = "loginForm" (ngSubmit)="loginClick()">
+
+    <div class=" my-3">
+      <label>Email : </label>
+      <input type="text" formControlName="email" class=" form-control">
+      @if (loginForm.get('email')?.errors && loginForm.get('email')?.touched) {
+        <div class="alert alert-danger">
+          @if (loginForm.get('email')?.errors?.['required']) {
+            <p>Email is required</p>
+          }
+          @else if (loginForm.get('email')?.errors?.['email']) {
+            <p>Enter correct Email</p>
+          }
+        </div>
+      }
+    </div>
+
+    <div class=" my-3">
+      <label>Password : </label>
+      <input type="text" formControlName="password" class=" form-control">
+      @if (loginForm.get('password')?.errors && loginForm.get('password')?.touched) {
+        <div class="alert alert-danger">
+          @if (loginForm.get('password')?.errors?.['required']) {
+            <p>password is required</p>
+          }
+          @else if (loginForm.get('password')?.errors?.['pattern']) {
+            <p>Enter correct password</p>
+          }
+        </div>
+      }
+    </div>
+
+
+    <button [disabled]="loginForm.invalid" type="submit" class=" btn bg-main text-white d-block ms-auto">Login Now
+      @if(isLoading){
+        <i class=" fa-solid fa-spinner fa-spin"></i>
+      }
+    </button>
+
+  </form>
+</div>
