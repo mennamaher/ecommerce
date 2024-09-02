@@ -1,0 +1,26 @@
+<div class=" pt-5">
+  <h2 class=" text-center text-main">Enter Your Data</h2>
+
+
+    <form [formGroup]="userDataForm" (ngSubmit)="checkOut()">
+      <div class=" d-flex flex-column gap-3">
+
+    <div class="">
+      <label formControlName="details" class=" text-main fw-semibold">Enter Your Address</label>
+      <input type="text"  class=" form-control">
+    </div>
+    <div class="">
+      <label formControlName="phone" class=" text-main fw-semibold">Enter Your phone</label>
+      <input type="text"  class=" form-control">
+    </div>
+    <div class="">
+      <label formControlName="city" class=" text-main fw-semibold">Enter Your city</label>
+      <input type="text"  class=" form-control">
+    </div>
+
+    <button type="submit" class=" btn bg-main text-white mx-auto">CheckOut</button>
+
+  </div>
+    </form>
+
+</div>

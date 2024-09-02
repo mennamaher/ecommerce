@@ -1,1 +1,53 @@
-<p>home works!</p>
+
+
+<div class=" w-75 mx-auto d-flex ">
+  <div class=" w-75 h-100">
+    <owl-carousel-o [options]="customOptions">
+
+      @for (item of sliderImages; track $index) {
+        <ng-template carouselSlide>
+          <img class=" " [src]="item" >
+        </ng-template>
+      }
+
+    </owl-carousel-o>
+  </div>
+  <div class=" w-25">
+    <img class=" h-50" src="../../../../assets/images/main-slider-2.jpeg">
+        <img class=" h-50 " src="../../../../assets/images/main-slider-1.jpeg">
+  </div>
+</div>
+
+
+
+<input [(ngModel)]="srch" class=" w-50 mx-auto form-control my-5" placeholder="search Product Name">
+
+
+<div class="container my-5">
+  <div class="row gy-2">
+
+    @for (item of allProducts | search : srch ; track $index) {
+      <div  class=" col-lg-2 col-md-4 product">
+        <div class="card py-2 cursor-pointer" style="width: 13rem;">
+          <div [routerLink]="['/details', item._id]"  >
+            <div class=" p-1 rounded-4">
+              <img [src]="item.imageCover" class="card-img-top rounded-4" alt="...">
+            </div>
+            <div class="card-body">
+              <span class="card-title text-main fw-bold">{{item.category.name}}</span>
+              <p class="card-text"> {{item.title}}</p>
+              <div class=" d-flex justify-content-between pt-1">
+                <span>{{item.price}} EGP</span>
+                <span> <i class=" fa-solid fa-star p-1 rating-color"></i>{{item.ratingsAverage}}</span>
+              </div>
+            </div>
+          </div>
+          <div class=" d-flex justify-content-center ">
+            <button (click)="addCart(item._id)" class=" btn bg-main text-white px-5"> add to cart</button>
+          </div>
+        </div>
+      </div>
+    }
+
+  </div>
+</div>

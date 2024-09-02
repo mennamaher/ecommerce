@@ -1,36 +1,78 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
   <div class="container">
     <a class="navbar-brand" ><img src="../../../../assets/images/freshcart-logo.svg" alt=""></a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
-      <div class="navbar-nav">
-          @if (isLogin) {
-            <a class="nav-link cursor-pointer" routerLink="home" routerLinkActive=" bg-main text-white rounded-pill">Home</a>
-            <a class="nav-link cursor-pointer" routerLink="cart" routerLinkActive=" bg-main text-white rounded-pill">Cart</a>
-            <a class="nav-link cursor-pointer" routerLink="products" routerLinkActive=" bg-main text-white rounded-pill">Products</a>
-            <a class="nav-link cursor-pointer" routerLink="brands" routerLinkActive=" bg-main text-white rounded-pill">brands</a>
-            <a class="nav-link cursor-pointer" routerLink="categories" routerLinkActive=" bg-main text-white rounded-pill">Categories</a>
-          }
-        </div>
 
-      <div class=" d-flex gap-3 align-items-center">
+    <div class="  navbar-collapse d-flex justify-content-between "  >
+
+    <div class="navbar-nav ">
+      @if(isLogin) {
+        <a class="nav-link cursor-pointer" routerLink="/home" routerLinkActive=" bg-main text-white rounded-pill">{{'Home'| translate}}</a>
+        <a class="nav-link cursor-pointer" routerLink="/cart" routerLinkActive=" bg-main text-white rounded-pill">{{'Cart'| translate}}</a>
+        <a class="nav-link cursor-pointer" routerLink="/products" routerLinkActive=" bg-main text-white rounded-pill">{{'Products'| translate}}</a>
+        <a class="nav-link cursor-pointer" routerLink="/brands" routerLinkActive=" bg-main text-white rounded-pill">{{'brands'| translate}}</a>
+        <a class="nav-link cursor-pointer" routerLink="/categories" routerLinkActive=" bg-main text-white rounded-pill">{{'Categories'| translate}}</a>
+      }
+    </div>
+    <div class=" d-flex gap-3 align-items-center">
+      <i class=" fa-brands fa-facebook cursor-pointer"></i>
+      <i class=" fa-brands fa-twitter cursor-pointer"></i>
+      <i class=" fa-brands fa-instagram cursor-pointer"></i>
+      <i class=" fa-brands fa-youtube cursor-pointer"></i>
+      <i class=" fa-brands fa-linkedin cursor-pointer"></i>
+
+      @if(!isLogin) {
+        <a class="nav-link cursor-pointer" routerLink="/login">{{'Login'| translate}}</a>
+      <a class="nav-link cursor-pointer" routerLink="/register">{{'Register'| translate}}</a>
+      }
+
+    <li class="cursor-pointer" (click)="changeLang('en')" >En</li>
+    <li class="cursor-pointer" (click)="changeLang('ar')" >Ar</li>
+
+      @if(isLogin) {
+        <a routerLink="/cart">
+          <i class="fa-solid fa-cart-shopping text-main cursor-pointer"></i></a>
+        <a (click)="logout()" class="nav-link cursor-pointer" >{{'LogOut'| translate}}</a>
+      }
+
+    </div>
+    </div>
+
+
+    <div class="collapse navbar-collapse d-flex justify-content-between "  >
+      <!-- <div class="navbar-nav ">
+          @if(isLogin) {
+            <a class="nav-link cursor-pointer" routerLink="/home" routerLinkActive=" bg-main text-white rounded-pill">Home</a>
+            <a class="nav-link cursor-pointer" routerLink="/cart" routerLinkActive=" bg-main text-white rounded-pill">Cart</a>
+            <a class="nav-link cursor-pointer" routerLink="/products" routerLinkActive=" bg-main text-white rounded-pill">Products</a>
+            <a class="nav-link cursor-pointer" routerLink="/brands" routerLinkActive=" bg-main text-white rounded-pill">brands</a>
+            <a class="nav-link cursor-pointer" routerLink="/categories" routerLinkActive=" bg-main text-white rounded-pill">Categories</a>
+          }
+        </div> -->
+
+      <!-- <div class=" d-flex gap-3 align-items-center">
         <i class=" fa-brands fa-facebook cursor-pointer"></i>
         <i class=" fa-brands fa-twitter cursor-pointer"></i>
         <i class=" fa-brands fa-instagram cursor-pointer"></i>
         <i class=" fa-brands fa-youtube cursor-pointer"></i>
         <i class=" fa-brands fa-linkedin cursor-pointer"></i>
 
-        @if (!isLogin) {
-          <a class="nav-link cursor-pointer" routerLink="login">LogIn</a>
-        <a class="nav-link cursor-pointer" routerLink="register">Register</a>
+        @if(!isLogin) {
+          <a class="nav-link cursor-pointer" routerLink="/login">LogIn</a>
+        <a class="nav-link cursor-pointer" routerLink="/register">Register</a>
         }
-        @else if (isLogin) {
+        @if(isLogin) {
+          <li><a routerLink="/cart">
+            <i class="fa-solid fa-cart-shopping text-main cursor-pointer"></i></a></li>
           <a (click)="logout()" class="nav-link cursor-pointer" >LogOut</a>
         }
 
-      </div>
+      </div> -->
     </div>
+
   </div>
 </nav>
+

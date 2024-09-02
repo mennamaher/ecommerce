@@ -1,1 +1,28 @@
-<p>cart works!</p>
+
+
+<div class="container my-5">
+  <h3 class=" text-center my-5 text-main fw-bold pt-5">Total Price: {{myCart.data.totalCartPrice}} EG</h3>
+
+  @for (product of myCart.data.products; track $index) {
+    <div class="row">
+      <div class=" col-md-2 my-2">
+        <img [src]="product.product.imageCover" class=" img-fluid">
+      </div>
+      <div class=" col-md-7 d-flex flex-column justify-content-center gap-3">
+        <p class=" fw-bold">{{product.product.title}}</p>
+        <span class=" fw-medium">price: {{product.price}}</span>
+        <i (click)="remove(product.product._id)" class="fa-solid fa-trash text-danger cursor-pointer "></i>
+          </div>
+
+          <div class=" col-md-3 d-flex align-items-center gap-2">
+            <i (click)="updateCount( product.product._id ,product.count=product.count+1)" class="fa-solid fa-square-plus cursor-pointer text-main"></i>
+            <span class=" fw-bold">{{product.count}}</span>
+            <i (click)="updateCount( product.product._id, product.count=product.count-1)" class="fa-solid fa-square-minus cursor-pointer text-main"></i>
+          </div>
+    </div>
+  }
+
+  <button [routerLink]="['/reqOrder', cartId]" class=" btn bg-main text-white d-block ms-auto"> Order</button>
+
+</div>
+

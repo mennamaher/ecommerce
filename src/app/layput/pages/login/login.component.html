@@ -1,6 +1,6 @@
 
-<div class=" w-75 my-5 mx-auto">
-  <h3 class=" text-main">Login Now</h3>
+<div class=" w-75 my-5 mx-auto  pt-5">
+  <h3 class=" text-main ">Login Now</h3>
 
   @if(errMsg){
     <h4 class="  alert alert-danger">{{errMsg}}</h4>
@@ -38,12 +38,14 @@
       }
     </div>
 
-
-    <button [disabled]="loginForm.invalid" type="submit" class=" btn bg-main text-white d-block ms-auto">Login Now
+    <div class=" d-flex justify-content-end align-items-center  gap-3">
+      <a routerLink="/forgetPassword" class=" cursor-pointer">Forget Password</a>
+    <button [disabled]="loginForm.invalid" type="submit" class=" btn bg-main text-white ">Login Now
       @if(isLoading){
         <i class=" fa-solid fa-spinner fa-spin"></i>
       }
     </button>
 
+    </div>
   </form>
 </div>
